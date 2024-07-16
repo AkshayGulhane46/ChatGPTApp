@@ -14,12 +14,11 @@ const Chat = () => {
         <MultiChatWindow 
         {...chatProps}
         style={{height:"100vh"}}
-        renderChatHeader={(chat)=><Header chat={chat}/>}
+        renderChatHeader={
+            (chat)=><Header chat={chat}/>
+        }
         />
-
     </div>
-
-
   )
 }
 
