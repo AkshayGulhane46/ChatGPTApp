@@ -1,5 +1,6 @@
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import React, { useState } from 'react'
+import Dropzone from 'react-dropzone';
 
 const StandardMessagesForm = () => {
   const {message,setMessage} = useState("");
@@ -36,6 +37,10 @@ const StandardMessagesForm = () => {
             onChange = {handleChange}>
             
           </input>  
+        </div>
+        <div className='message-form-icons'>
+          <Dropzone 
+          acceptedFiles=".jpg"/>
         </div>
         </div>
     </div>
