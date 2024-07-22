@@ -1,4 +1,4 @@
-import { XMarkIcon } from '@heroicons/react/24/solid';
+import { PaperAirplaneIcon, PaperClipIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import React, { useState } from 'react'
 import Dropzone from 'react-dropzone';
 
@@ -40,7 +40,32 @@ const StandardMessagesForm = () => {
         </div>
         <div className='message-form-icons'>
           <Dropzone 
-          acceptedFiles=".jpg"/>
+          acceptedFiles=".jpg,.jpeg,.png"
+          multiple={false}
+          noClick={true}
+          onDrop={(acceptedFiles) =>{
+            setAttachament(acceptedFiles)
+            setPreview(URL.createObjectURL(acceptedFiles[0]))
+          }}
+          >
+            {({getRootProps,getInputProps,open})=> (
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                <PaperClipIcon
+                className='message-form-icon-clip'
+                onClick={open}/>
+              </div>
+            )}
+
+          </Dropzone>
+          <hr className='verticle-line'/>
+          <PaperAirplaneIcon
+          className='message-form-icon-airplane'
+          onClick={()=>{
+            setPreview("");
+            handleSubmit();
+          }}
+          />
         </div>
         </div>
     </div>
